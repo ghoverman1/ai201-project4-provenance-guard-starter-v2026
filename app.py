@@ -214,9 +214,9 @@ def submit():
     if not isinstance(text, str) or not text.strip():
         audit.log_rejection(creator_id=creator_id, reason="invalid_text")
         return jsonify({"error": "invalid_text", "message": "text must be a non-empty string."}), 400
-    if len(text) > 100_000:
+    if len(text) > 5_000:
         audit.log_rejection(creator_id=creator_id, reason="text_too_long")
-        return jsonify({"error": "text_too_long", "message": "text must not exceed 100000 characters."}), 413
+        return jsonify({"error": "text_too_long", "message": "text must not exceed 5000 characters."}), 413
 
     try:
         model_score = detector.model_signal(text)
@@ -269,14 +269,27 @@ def appeal():
     to the person on the other end. It's the only thing standing between a
     wrong accusation and nothing at all.
     """
-    payload = request.get_json(silent=True) or {}
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return jsonify({"error": "invalid_payload", "message": "Expected a JSON object."}), 400
 
-    # TODO: delete this and build the route.
+    content_id = payload.get("content_id")
+    reasoning = payload.get("reasoning")
+    if not isinstance(content_id, str) or not content_id.strip():
+        return jsonify({"error": "invalid_content_id", "message": "content_id must be a non-empty string."}), 400
+    if not isinstance(reasoning, str) or not reasoning.strip():
+        return jsonify({"error": "invalid_reasoning", "message": "reasoning must be a non-empty string."}), 400
+
+    entries = audit.entries_for(content_id)
+    if not entries:
+        return jsonify({"error": "not_found", "message": "No submission exists for this content_id."}), 404
+
+    audit.log_appeal(content_id=content_id, creator_id=entries[0]["creator_id"], reasoning=reasoning)
     return jsonify({
-        "error": "not_implemented",
-        "message": "POST /appeal isn't built yet — see the TODO in app.py.",
-        "you_sent": payload,
-    }), 501
+        "content_id": content_id,
+        "status": "under_review",
+        "message": "Your appeal has been recorded.",
+    })
 
 
 # ── Already works ─────────────────────────────────────────────────────────────

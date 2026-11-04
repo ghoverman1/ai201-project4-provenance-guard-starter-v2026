@@ -1,1 +1,7 @@
 {"timestamp": "2026-11-04T17:43:15+00:00", "content_id": "3b5097c2-9569-4fa1-9342-56387531559a", "creator_id": "george123", "guess": "ai", "model_score": 0.8574, "style_score": 0.5, "combined_score": 0.6787000000000001, "label": "PLACEHOLDER — write the high-confidence AI label.", "status": "decided"}
+{"timestamp": "2026-11-04T18:40:24+00:00", "content_id": "3b5097c2-9569-4fa1-9342-56387531559a", "creator_id": "george123", "event": "appeal", "status": "under_review", "reasoning": "I wrote this passage myself and would like the classification reviewed."}
+{"timestamp": "2026-11-04T18:50:49+00:00", "creator_id": "test", "event": "rejected", "status": "rejected", "reason": "invalid_text"}
+{"timestamp": "2026-11-04T18:50:49+00:00", "creator_id": "test", "event": "rejected", "status": "rejected", "reason": "invalid_text"}
+{"timestamp": "2026-11-04T18:50:49+00:00", "creator_id": "test", "event": "rejected", "status": "rejected", "reason": "text_too_long"}
+{"timestamp": "2026-11-04T18:52:43+00:00", "content_id": "7a9dad83-4d0e-4b8e-94e2-45de66f53cb6", "creator_id": "project7_test", "guess": "unsure", "model_score": 0.4803, "style_score": 0.5721737667376953, "combined_score": 0.5262368833688477, "label": "We cannot confidently tell whether this was written by a person or AI.", "status": "decided"}
+{"timestamp": "2026-11-04T18:52:43+00:00", "content_id": "7a9dad83-4d0e-4b8e-94e2-45de66f53cb6", "creator_id": "project7_test", "event": "appeal", "status": "under_review", "reasoning": "This is a test appeal requesting human review of the classification."}

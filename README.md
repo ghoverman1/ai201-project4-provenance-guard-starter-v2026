@@ -175,43 +175,59 @@ These are the current implementation thresholds, not empirically validated optim
      and the log entries. -->
 
 **A submission**
+SUBMISSION REQUEST
+{
+  "creator_id": "project7_test",
+  "text": "The city woke slowly under a pale November sky, its streets still damp from the night's rain. Somewhere a cafe owner was rolling up a metal shutter, and the smell of fresh bread began drifting toward the empty bus stop on the corner. It was the kind of quiet morning that made the whole day feel full of possibility."
+}
 
-<!-- The response needs content_id, guess, confidence, label, AND both
-     signal scores - model_score and style_score. Unit 8's tools read those
-     two off the response, so leaving them out costs you next unit's
-     diagnostics. -->
+SUBMISSION RESPONSE
+{
+  "confidence": 0.5262368833688477,
+  "content_id": "7a9dad83-4d0e-4b8e-94e2-45de66f53cb6",
+  "guess": "unsure",
+  "label": "We cannot confidently tell whether this was written by a person or AI.",
+  "model_score": 0.4803,
+  "style_score": 0.5721737667376953
+}
 
-```bash
-$ curl -X POST http://127.0.0.1:5000/submit \
-  -H "Content-Type: application/json" \
-  -d '{"text": "...", "creator_id": "..."}'
-```
+APPEAL REQUEST
+{
+  "content_id": "7a9dad83-4d0e-4b8e-94e2-45de66f53cb6",
+  "reasoning": "This is a test appeal requesting human review of the classification."
+}
 
-```json
+APPEAL RESPONSE
+{
+  "content_id": "7a9dad83-4d0e-4b8e-94e2-45de66f53cb6",
+  "message": "Your appeal has been recorded.",
+  "status": "under_review"
+}
 
-```
+AUDIT LOG
+[
+  {
+    "combined_score": 0.5262368833688477,
+    "content_id": "7a9dad83-4d0e-4b8e-94e2-45de66f53cb6",
+    "creator_id": "project7_test",
+    "guess": "unsure",
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "model_score": 0.4803,
+    "status": "decided",
+    "style_score": 0.5721737667376953,
+    "timestamp": "2026-11-04T18:52:43+00:00"
+  },
+  {
+    "content_id": "7a9dad83-4d0e-4b8e-94e2-45de66f53cb6",
+    "creator_id": "project7_test",
+    "event": "appeal",
+    "reasoning": "This is a test appeal requesting human review of the classification.",
+    "status": "under_review",
+    "timestamp": "2026-11-04T18:52:43+00:00"
+  }
+]
 
-**An appeal**
-
-```bash
-$ curl -X POST http://127.0.0.1:5000/appeal \
-  -H "Content-Type: application/json" \
-  -d '{"content_id": "...", "reasoning": "..."}'
-```
-
-```json
-
-```
-
-**What the log shows afterwards**
-
-```bash
-$ curl "http://127.0.0.1:5000/log?limit=3"
-```
-
-```json
-
-```
+PASS: Submission and appeal recorded.
 
 ---
 
