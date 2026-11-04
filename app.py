@@ -199,17 +199,54 @@ def submit():
     what should this do when `text` is missing, empty, or enormous? A crash on
     a malformed input is one of the most common real failures there is.
     """
-    payload = request.get_json(silent=True) or {}
+    import detector
+    import scoring
+    import stylometry
 
-    # TODO: delete this and build the route.
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return jsonify({"error": "invalid_payload", "message": "Expected a JSON object."}), 400
+
+    text = payload.get("text")
+    creator_id = payload.get("creator_id")
+    if not isinstance(creator_id, str) or not creator_id.strip():
+        return jsonify({"error": "invalid_creator_id", "message": "creator_id must be a non-empty string."}), 400
+    if not isinstance(text, str) or not text.strip():
+        audit.log_rejection(creator_id=creator_id, reason="invalid_text")
+        return jsonify({"error": "invalid_text", "message": "text must be a non-empty string."}), 400
+    if len(text) > 100_000:
+        audit.log_rejection(creator_id=creator_id, reason="text_too_long")
+        return jsonify({"error": "text_too_long", "message": "text must not exceed 100000 characters."}), 413
+
+    try:
+        model_score = detector.model_signal(text)
+    except ValueError as exc:
+        audit.log_rejection(creator_id=creator_id, reason="invalid_text")
+        return jsonify({"error": "invalid_text", "message": str(exc)}), 400
+    except detector.DetectorUnavailable:
+        return jsonify({"error": "detector_unavailable", "message": "The detector is unavailable. Try again later."}), 503
+
+    style_score = stylometry.style_signal(text)
+    confidence = scoring.combine_signals(model_score, style_score)
+    guess, label = scoring.score_to_label(confidence)
+    content_id = str(uuid.uuid4())
+    audit.log_decision(
+        content_id=content_id,
+        creator_id=creator_id,
+        guess=guess,
+        model_score=model_score,
+        style_score=style_score,
+        combined_score=confidence,
+        label=label,
+    )
     return jsonify({
-        "error": "not_implemented",
-        "message": "POST /submit isn't built yet — see the TODO in app.py.",
-        "you_sent": {
-            "text_length": len(payload.get("text", "")),
-            "creator_id": payload.get("creator_id"),
-        },
-    }), 501
+        "content_id": content_id,
+        "guess": guess,
+        "confidence": confidence,
+        "label": label,
+        "model_score": model_score,
+        "style_score": style_score,
+    })
 
 
 @app.post("/appeal")
