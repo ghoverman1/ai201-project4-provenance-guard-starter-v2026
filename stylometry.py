@@ -32,6 +32,7 @@ anything together:
 
 import re
 import statistics
+import unicodedata
 
 
 def sentences(text: str) -> list[str]:
@@ -49,7 +50,10 @@ def words(text: str) -> list[str]:
 
 def sentence_length_spread(text: str) -> float:
     """
-    How much sentence length varies. ← TODO
+    Sentence word-count sample standard deviation divided by the mean.
+
+    Higher values mean more varied, human-like sentence lengths. Return zero
+    for fewer than two sentences or when there are no words.
 
     Returns:
         A float. Decide yourself what scale it's on and which direction means
@@ -64,8 +68,11 @@ def sentence_length_spread(text: str) -> float:
     `stdev` raises on fewer than two values. Decide what that should return
     before the attack set decides for you.
     """
-    # TODO: replace this
-    return 0.0
+    lengths = [len(words(sentence)) for sentence in sentences(text)]
+    if len(lengths) < 2:
+        return 0.0
+    mean_length = sum(lengths) / len(lengths)
+    return statistics.stdev(lengths) / mean_length if mean_length else 0.0
 
 
 def type_token_ratio(text: str) -> float:
@@ -80,8 +87,8 @@ def type_token_ratio(text: str) -> float:
     directly comparable on it, and if your test inputs vary a lot in length,
     that alone can look like a signal.
     """
-    # TODO: replace this
-    return 0.0
+    tokens = words(text)
+    return len(set(tokens)) / len(tokens) if tokens else 0.0
 
 
 def punctuation_density(text: str) -> float:
@@ -94,8 +101,9 @@ def punctuation_density(text: str) -> float:
         more interesting than full stops, because they vary more between
         writers.
     """
-    # TODO: replace this
-    return 0.0
+    if not text:
+        return 0.0
+    return sum(unicodedata.category(char).startswith("P") for char in text) / len(text)
 
 
 # ── Combining them ───────────────────────────────────────────────────────────
@@ -122,8 +130,17 @@ def style_signal(text: str) -> float:
     you trust it. Plain and ordinary, not formal: formal prose reads as *human*
     to signal one, and it is plain writing that gets accused.
     """
-    # TODO: replace this
-    return 0.5
+    # Treat wordless input as neutral: there is no writing style to measure.
+    if not words(text):
+        return 0.5
+
+    # Spread of 1 and punctuation at 10% saturate the human-like scales.
+    # Higher vocabulary diversity also points toward human writing. Flip all
+    # three normalized measures and weight them equally for an AI-like score.
+    spread = min(sentence_length_spread(text), 1.0)
+    diversity = type_token_ratio(text)
+    punctuation = min(punctuation_density(text) / 0.1, 1.0)
+    return (3.0 - spread - diversity - punctuation) / 3.0
 
 
 if __name__ == "__main__":

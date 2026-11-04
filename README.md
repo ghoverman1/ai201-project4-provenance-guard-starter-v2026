@@ -99,46 +99,74 @@ someone to do on purpose, and unit 8's attack set will do it to you.
 
 ### The combining rule
 
-<!-- Write the rule in words, then give the numbers. What happens when the two
-     signals disagree? -->
-
 **The rule:**
 
+I use a weighted average of two independent signals: the GPT-2 perplexity-based detector and my stylometry signal.
+
+The GPT-2 signal measures how predictable the writing is to a language model, while stylometry measures structural features such as sentence-length variation, vocabulary diversity, and punctuation density.
+
+My stylometry implementation normalizes these three measurements before combining them. It caps sentence-length spread at 1, keeps the type-token ratio on its existing 0–1 scale, and divides punctuation density by 0.1 before capping it at 1.
+
+I then invert these normalized measurements because my heuristic assumes that more uniform sentences, more repetitive vocabulary, and less punctuation indicate more AI-like writing. The three features receive equal weight.
+
+The overall system combines the GPT-2 score and the style score equally. When they disagree, averaging can move the result toward the uncertain range rather than automatically trusting either signal.
 
 **The numbers:**
 
+Stylometry's score is calculated as:
+
+`style_score = (3 - normalized_spread - vocabulary_diversity - normalized_punctuation) / 3`
+
+Each stylistic feature contributes one-third of the style signal.
+
+The final combined score is:
+
+`combined_score = 0.50 * model_score + 0.50 * style_score`
+
+Both scores range from 0 to 1, with higher values indicating more AI-like writing. These are heuristic scores rather than calibrated probabilities of authorship.
+
 **Where it lives:** `scoring.py::combine_signals`
 
-<!-- ⚠️ The grader checks your code against that line. If your rule lives
-     somewhere else, say where. -->
-
+The overall weights are defined in `config.py`. The three style measurements and their combination are implemented in `stylometry.py`.
 
 **A case where my two signals split, and what my rule does with it:**
 
+I tested two passages using both detection methods.
 
+| Passage | GPT-2 score | Style score | Combined score |
+|---|---:|---:|---:|
+| Heidegger passage | 0.2838 | 0.4572 | 0.3705 |
+| City morning passage | 0.4804 | 0.5722 | 0.5263 |
+
+The city morning passage provides an example of the two signals disagreeing slightly. GPT-2 produced 0.4804, below the neutral midpoint of 0.5, while stylometry produced 0.5722, above that midpoint.
+
+The equally weighted average was approximately 0.5263, falling within my uncertain classification range.
+
+The difference between the two signals was relatively small, but it demonstrates why combining them can be preferable to relying entirely on one measurement.
+
+These examples also exposed limitations: writing that appears stylistically human-like to one detector can receive a different score from another. Neither signal independently establishes the actual author.
 
 ---
 
 ## Label Variants
 
-<!-- The exact text of all three labels, as a reader would see them, and the
-     score range each covers.
-
-     Write them for someone who has never heard the word "threshold". -->
+The following are the current labels and score ranges implemented in `scoring.py::score_to_label` and `config.py`.
 
 | Label | Score range | The exact text a reader sees |
 |---|---|---|
-| high-confidence human |  |  |
-| unsure |  |  |
-| high-confidence AI |  |  |
+| High-confidence human | 0.00 ≤ score ≤ 0.35 | We think this was probably written by a person. |
+| Unsure | 0.35 < score < 0.65 | We cannot confidently tell whether this was written by a person or AI. |
+| High-confidence AI | 0.65 ≤ score ≤ 1.00 | We think this was probably written by AI. |
 
 **Why I worded the "unsure" one this way:**
-<!-- It's the hardest of the three. It has to admit uncertainty without
-     sounding like an accusation, because the person reading it may well have
-     written every word themselves. -->
 
+I wanted the uncertain label to acknowledge the system's limitations without implying that the writer had done something wrong.
 
+The system analyzes patterns rather than directly verifying authorship, so an uncertain score should not be treated as an accusation.
 
+This wording explicitly states that the system cannot reach a confident conclusion. The writer should not have to understand confidence scores or thresholds to understand the message.
+
+These are the current implementation thresholds, not empirically validated optimal thresholds. My false-positive acceptance criterion will require testing whether the high-confidence AI label is sufficiently conservative.
 ---
 
 ## Sample Run
@@ -189,17 +217,19 @@ $ curl "http://127.0.0.1:5000/log?limit=3"
 
 ## How I Used AI
 
-**Moment 1**
+**Moment 1 — Understanding the backend and defining acceptance criteria**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- **What I asked for:** I asked AI to explain how HTTP requests, JSON, curl, and the Flask backend worked together. I also asked for feedback on the measurable targets I was developing for Provenance Guard.
+- **What came back:** AI explained how `app.py` receives requests and calls Python functions. It also helped format my acceptance criteria and suggested measurable targets for score separation, appeal reliability, and invalid input handling.
+- **What I changed:** I tested the actual application using curl, inspected the existing `/submit` implementation, and verified the response against the audit log. For the acceptance criteria, I selected a limit of one false accusation per ten human passages and adopted specific targets after discussing the trade-offs.
 
-**Moment 2**
+**Moment 2 — Developing and testing the stylometry signal**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- **What I asked for:** I asked AI to explain sentence-length spread, vocabulary diversity, punctuation density, and how these could be combined with GPT-2's output.
+- **What came back:** AI suggested ways to normalize the measurements, discussed their limitations, and proposed an initial scoring approach.
+- **What I changed:** I used an implementation that normalizes and equally weights all three stylistic measurements. I ran the detector and stylometry functions on test passages, compared their scores, and examined how my 50/50 combining rule handled differences between the signals.
+
+AI also helped me interpret the results and organize my README documentation. The reported scores come from the code I ran locally rather than estimates generated by AI.
 
 <!-- ═══════════════════════ UNIT 8 — THE TEST ═══════════════════════ -->
 
