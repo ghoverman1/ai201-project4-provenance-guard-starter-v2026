@@ -39,6 +39,7 @@
 <!-- The path a submission takes, from arriving to the label a reader sees.
      Six or seven steps — this is the trace you wrote in Milestone 1. -->
 
+When a user submits writing, it arrives as JSON with the text and a creator_id. The backend, handled by app.py, receives the HTTP request and checks the input. The text then goes through two separate analyses. detector.py runs it through an AI model, and stylometry.py looks at writing patterns. The system combines the two signals into one score and turns it into a label for the reader: "likely AI," "likely human," or "uncertain." Finally, it saves the result and returns it with the content ID, prediction, confidence, and label. A human submits an original poem, but the detector assigns it a high AI-likelihood score. The system displays a potentially misleading label. Rather than treating the classification as proof, the system provides an appeal mechanism. The writer can submit their reasoning, and the item's status changes to under_review for further consideration. The system has two endpoints. POST /submit takes the writing's text and a creator_id and returns a content_id along with the prediction, a confidence score, and the reader-facing label. POST /appeal lets a writer challenge a result by sending the content_id and their reasoning. It returns a confirmation and sets the content's status to under_review.
 
 
 ---
@@ -55,17 +56,46 @@
 
 **What it measures:**
 
+Perplexity: Predictability is not the same thing as authorship. What this signal actually
+rewards is **common words in short, ordinary sentences** — and plenty of real
+people write that way.
+
+
 **Why that might differ between human and AI writing:**
 
+The idea is the one every AI-detection product is built on. A language model
+writes by repeatedly picking a likely next word, so text a model produced tends
+to be text a model finds easy to predict. Human writing wanders more — odd word
+choices, abrupt turns, the specific rather than the typical.
+
 **What it can't see:**
+
+Someone writing in a second language, sticking to vocabulary they're sure of.
+A younger writer. Anyone writing plainly on purpose. Measured against gpt2,
+writing like that scores about as machine-like as machine writing does.
+
+The reverse trips people up too: dense, ornate prose full of rare words often
+scores as *human* on this signal, because rare words are exactly what a
+language model fails to predict. Formality on its own doesn't decide it.
 
 ### Signal two — the style signal
 
 **What it measures:**
 
+This one measures it *as text* — the shape of it, without understanding a word: sentence-length variation, vocabulary diversity, and punctuation patterns.. 
+
 **Why that might differ between human and AI writing:**
 
+Generated prose tends toward even, mid-length sentences and a narrower band of vocabulary, because
+that's what "most likely next word" produces on average. Human writing is
+lumpier — a three-word sentence next to a forty-word one.
+
 **What it can't see:**
+
+This signal cannot read. It has no idea what the text says. Anything that
+changes the shape without changing the substance moves it — adding typos,
+breaking up sentences, pasting in a quotation. That is a very cheap thing for
+someone to do on purpose, and unit 8's attack set will do it to you.
 
 ### The combining rule
 
@@ -74,12 +104,14 @@
 
 **The rule:**
 
+
 **The numbers:**
 
 **Where it lives:** `scoring.py::combine_signals`
 
 <!-- ⚠️ The grader checks your code against that line. If your rule lives
      somewhere else, say where. -->
+
 
 **A case where my two signals split, and what my rule does with it:**
 
