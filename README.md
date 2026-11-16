@@ -279,22 +279,246 @@ This confirms that the rate limiter prevents excessive submissions and records r
 
 ## Attack Run — Before
 
-<!-- Every attack with its outcome and a held-or-broke mark.
-     `run_attacks.py --label before` produces the table. -->
+**Test:** `python run_attacks.py --set "/Users/georgehoverman/Downloads/attack_set"`  
+**Date:** November 16, 2026  
+**Total:** 56 attacks
 
+For this evaluation, I count an AI-text evasion as BROKE when the detector does not return `ai`, including when it returns `unsure`. For human-written false-positive tests, returning `ai` counts as BROKE. Malformed requests should be handled without crashing, and invalid or meaningless inputs should not receive confident authorship classifications.
 
+Prompt-injection verdicts are provisional because matching a requested classification does not necessarily prove that the injected instruction was followed.
 
-**Ten audit log entries from the run**
+### Results by attack category
 
-<!-- Choose entries that show the interesting failures, not the ten easiest. -->
+| Family | Total | BROKE | HELD |
+|---|---:|---:|---:|
+| Evasion | 10 | 9 | 1 |
+| False positives | 8 | 6 | 2 |
+| Prompt injection | 6 | 0 | 6* |
+| Malformed inputs and requests | 20 | 5 | 15 |
+| Flood | 12 | 0 | 12 |
+| **Total** | **56** | **20** | **36** |
+
+*Prompt-injection verdicts are provisional pending interpretation of the attempted behavior.*
+
+### Individual attack results
+
+| ID | Target | HTTP | Guess | Score | Verdict |
+|---|---|---:|---|---:|---|
+| EV01 | Typos increase vocabulary variety | 200 | unsure | 0.382 | BROKE |
+| EV02 | Broken-up sentences alter length spread | 200 | unsure | 0.478 | BROKE |
+| EV03 | Pasted quotation changes writing style | 200 | unsure | 0.576 | BROKE |
+| EV04 | Unusual words alter model perplexity | 200 | unsure | 0.601 | BROKE |
+| EV05 | Heavy human editing | 200 | unsure | 0.369 | BROKE |
+| EV06 | One long and one short sentence | 200 | unsure | 0.474 | BROKE |
+| EV07 | Extra punctuation | 200 | unsure | 0.613 | BROKE |
+| EV08 | Text below the token window | 200 | unsure | 0.358 | BROKE |
+| EV09 | Human introduction added to AI text | 200 | unsure | 0.594 | BROKE |
+| EV10 | Repeated stanza structure | 200 | ai | 0.861 | HELD |
+| FP01 | Plain human writing | 200 | unsure | 0.583 | HELD |
+| FP02 | Formal human writing | 200 | ai | 0.683 | BROKE |
+| FP03 | Careful non-native English writing | 200 | ai | 0.699 | BROKE |
+| FP04 | Student essay following a rubric | 200 | ai | 0.687 | BROKE |
+| FP05 | Human-written technical documentation | 200 | ai | 0.718 | BROKE |
+| FP06 | Formal human-written template | 200 | ai | 0.699 | BROKE |
+| FP07 | Deliberate repetition in human writing | 200 | ai | 0.698 | BROKE |
+| FP08 | Very short human writing | 200 | human | 0.283 | HELD |
+| PI01 | Instruction to ignore detector | 200 | unsure | 0.439 | HELD* |
+| PI02 | Fake system instruction | 200 | human | 0.293 | HELD* |
+| PI03 | Instruction disguised as author note | 200 | unsure | 0.558 | HELD* |
+| PI04 | Attempt to alter label output | 200 | unsure | 0.473 | HELD* |
+| PI05 | Attempt to inject into audit log | 200 | unsure | 0.424 | HELD* |
+| PI06 | Instruction mixed with human writing | 200 | unsure | 0.556 | HELD* |
+| MF01 | Whitespace-only text | 400 | — | — | HELD |
+| MF02 | Single character | 400 | — | — | HELD |
+| MF03 | Control characters | 200 | human | 0.175 | BROKE |
+| MF04 | Punctuation-only text | 200 | human | 0.256 | BROKE |
+| MF05 | Extremely long single word | 200 | ai | 0.832 | BROKE |
+| MF06 | Emoji-only text | 200 | ai | 0.748 | BROKE |
+| MF07 | Right-to-left Arabic writing | 200 | ai | 0.703 | BROKE |
+| MF08 | Text exceeding character limit | 413 | — | — | HELD |
+| RQ01 | Missing text | 400 | — | — | HELD |
+| RQ02 | Missing creator ID | 400 | — | — | HELD |
+| RQ03 | Numeric text | 400 | — | — | HELD |
+| RQ04 | List instead of text | 400 | — | — | HELD |
+| RQ05 | Null text | 400 | — | — | HELD |
+| RQ06 | Object instead of creator ID | 400 | — | — | HELD |
+| RQ07 | JSON array body | 400 | — | — | HELD |
+| RQ08 | Invalid JSON syntax | 400 | — | — | HELD |
+| RQ09 | Empty request body | 400 | — | — | HELD |
+| RQ10 | Form-encoded request | 400 | — | — | HELD |
+| RQ11 | Incorrect content type | 400 | — | — | HELD |
+| RQ12 | Deeply nested JSON | 400 | — | — | HELD |
+| FL01_01 | Flood request 1 | 200 | human | 0.317 | HELD |
+| FL01_02 | Flood request 2 | 200 | human | 0.317 | HELD |
+| FL01_03 | Flood request 3 | 200 | human | 0.317 | HELD |
+| FL01_04 | Flood request 4 | 200 | human | 0.317 | HELD |
+| FL01_05 | Flood request 5 | 200 | human | 0.317 | HELD |
+| FL01_06 | Flood request 6 | 200 | human | 0.317 | HELD |
+| FL01_07 | Flood request 7 | 200 | human | 0.317 | HELD |
+| FL01_08 | Flood request 8 | 200 | human | 0.317 | HELD |
+| FL01_09 | Flood request 9 | 200 | human | 0.317 | HELD |
+| FL01_10 | Flood request 10 | 200 | human | 0.317 | HELD |
+| FL01_11 | Flood request 11 | 429 | — | — | HELD |
+| FL01_12 | Flood request 12 | 429 | — | — | HELD |
+
+### Ten audit log entries from the run
+
+The following entries were taken from the actual audit log. They illustrate false positives, evasion, prompt injection, unusual inputs, and successful rate limiting.
 
 ```json
-
+[
+  {
+    "combined_score": 0.6829182538406631,
+    "content_id": "435098df-6a43-4f0b-a64f-894f37e59357",
+    "creator_id": "attacker_FP02",
+    "guess": "ai",
+    "label": "We think this was probably written by AI.",
+    "model_score": 0.7387,
+    "status": "decided",
+    "style_score": 0.6271365076813262,
+    "timestamp": "2026-11-16T21:29:12+00:00"
+  },
+  {
+    "combined_score": 0.6994592400103354,
+    "content_id": "a0686170-d0e6-4663-a424-91355bd10917",
+    "creator_id": "attacker_FP03",
+    "guess": "ai",
+    "label": "We think this was probably written by AI.",
+    "model_score": 0.8051,
+    "status": "decided",
+    "style_score": 0.593818480020671,
+    "timestamp": "2026-11-16T21:29:12+00:00"
+  },
+  {
+    "combined_score": 0.7183151031001098,
+    "content_id": "29600274-c445-4e02-a4af-a50cf41c39e6",
+    "creator_id": "attacker_FP05",
+    "guess": "ai",
+    "label": "We think this was probably written by AI.",
+    "model_score": 0.8005,
+    "status": "decided",
+    "style_score": 0.6361302062002195,
+    "timestamp": "2026-11-16T21:29:13+00:00"
+  },
+  {
+    "combined_score": 0.6979339013830549,
+    "content_id": "21fcda4f-50f7-41fe-af5b-dd83884aa704",
+    "creator_id": "attacker_FP07",
+    "guess": "ai",
+    "label": "We think this was probably written by AI.",
+    "model_score": 0.8816,
+    "status": "decided",
+    "style_score": 0.5142678027661097,
+    "timestamp": "2026-11-16T21:29:13+00:00"
+  },
+  {
+    "combined_score": 0.38195793007138623,
+    "content_id": "32cd7808-037f-418a-95a1-15dae7155e06",
+    "creator_id": "attacker_EV01",
+    "guess": "unsure",
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "model_score": 0.1635,
+    "status": "decided",
+    "style_score": 0.6004158601427725,
+    "timestamp": "2026-11-16T21:29:12+00:00"
+  },
+  {
+    "combined_score": 0.5936986645045139,
+    "content_id": "8a3e8503-0705-46a4-9355-100414f7cc42",
+    "creator_id": "attacker_EV09",
+    "guess": "unsure",
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "model_score": 0.7042,
+    "status": "decided",
+    "style_score": 0.48319732900902784,
+    "timestamp": "2026-11-16T21:29:12+00:00"
+  },
+  {
+    "combined_score": 0.4238769460653445,
+    "content_id": "15eea7fa-95c2-446c-b5ba-7819250c8c27",
+    "creator_id": "attacker_PI05",
+    "guess": "unsure",
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "model_score": 0.6401,
+    "status": "decided",
+    "style_score": 0.20765389213068894,
+    "timestamp": "2026-11-16T21:29:13+00:00"
+  },
+  {
+    "combined_score": 0.17460317460317462,
+    "content_id": "7183b494-8f36-4e12-b107-f8db61a592da",
+    "creator_id": "attacker_MF03",
+    "guess": "human",
+    "label": "We think this was probably written by a person.",
+    "model_score": 0.0,
+    "status": "decided",
+    "style_score": 0.34920634920634924,
+    "timestamp": "2026-11-16T21:29:13+00:00"
+  },
+  {
+    "combined_score": 0.7032,
+    "content_id": "abf81228-77cc-45d7-988f-eb0ccc8f1ac0",
+    "creator_id": "attacker_MF07",
+    "guess": "ai",
+    "label": "We think this was probably written by AI.",
+    "model_score": 0.9064,
+    "status": "decided",
+    "style_score": 0.5,
+    "timestamp": "2026-11-16T21:29:13+00:00"
+  },
+  {
+    "creator_id": "attacker_flood",
+    "event": "rejected",
+    "limit": "10 per 1 minute",
+    "reason": "rate_limited",
+    "status": "rejected",
+    "timestamp": "2026-11-16T21:29:13+00:00"
+  }
+]
 ```
 
-**The single worst outcome** — the one I'd least want to explain to a writer
-whose work got caught by it:
+### The single worst outcome
 
+**FP03 — Careful writing by a non-native English speaker**
+
+The system classified a staff-designated human-written passage as likely AI-generated.
+
+The scores were:
+
+- Model signal: 0.8051
+- Style signal: 0.5938
+- Combined score: 0.6995
+- Final classification: `ai`
+
+This is particularly concerning because the submission contained ordinary personal writing about adapting to a new country. The detector's high AI classification was not supported by the passage's actual human authorship.
+
+A plausible explanation is that predictable vocabulary and relatively simple sentence structures were treated as evidence of AI authorship. Both signals contributed to the resulting classification.
+
+The broader pattern reinforces the concern: six of eight human-written false-positive probes were classified as AI.
+
+I would prioritize reducing these false accusations because wrongly labeling someone's authentic writing as AI-generated can have serious consequences, particularly in an educational setting.
+
+### Additional observations
+
+**Evasion:** Nine of ten attempts avoided an `ai` classification. Many altered vocabulary, punctuation, sentence structure, or the mixture of AI and human writing. The repeated-stanza attack, EV10, was the only evasion case classified as AI.
+
+**Prompt injection:** The system returned structurally valid responses for all six attacks. PI02 returned `human`, matching part of its injected instruction, but its actual score was 0.293 rather than the requested 0.02. This does not establish that the injected instruction controlled the output.
+
+**Malformed inputs:** All 12 malformed HTTP requests were rejected with HTTP 400. However, five unusual text inputs were accepted and confidently classified, even when their content was not meaningful evidence of authorship.
+
+In particular, MF07 contained valid Arabic writing, but the system returned an AI classification with a combined score of 0.7032. This raises questions about applying English-oriented detection signals to other languages.
+
+**Audit logging:** The extracted audit log contains identifiable rejection entries for only five of the 12 malformed HTTP requests. Seven requests lack identifiable corresponding rejection entries. This suggests that some validation paths return error responses without creating audit events.
+
+**Rate limiting:** The first ten submissions from the same creator succeeded. Submissions 11 and 12 returned HTTP 429, and the rejections appeared in the audit log.
+
+### Baseline conclusion
+
+The system handled invalid request structures and flooding reasonably well, but the attack run exposed substantial weaknesses in authorship classification.
+
+The most important finding is the false-positive rate on human-written examples. The system appears sensitive to writing style and predictability in ways that can incorrectly penalize legitimate writers.
+
+These are the **before-improvement results**. No changes to detection signals, thresholds, or scoring weights have been made based on the attack results yet.
 
 
 ---

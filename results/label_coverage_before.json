@@ -1,0 +1,68 @@
+[
+  [
+    {
+      "score": 0.0,
+      "guess": "human"
+    },
+    {
+      "score": 0.35,
+      "guess": "human"
+    },
+    {
+      "score": 0.5,
+      "guess": "unsure"
+    },
+    {
+      "score": 0.65,
+      "guess": "ai"
+    },
+    {
+      "score": 1.0,
+      "guess": "ai"
+    }
+  ],
+  [
+    {
+      "score": 0.0,
+      "guess": "human"
+    },
+    {
+      "score": 0.35,
+      "guess": "human"
+    },
+    {
+      "score": 0.5,
+      "guess": "unsure"
+    },
+    {
+      "score": 0.65,
+      "guess": "ai"
+    },
+    {
+      "score": 1.0,
+      "guess": "ai"
+    }
+  ],
+  [
+    {
+      "score": 0.0,
+      "guess": "human"
+    },
+    {
+      "score": 0.35,
+      "guess": "human"
+    },
+    {
+      "score": 0.5,
+      "guess": "unsure"
+    },
+    {
+      "score": 0.65,
+      "guess": "ai"
+    },
+    {
+      "score": 1.0,
+      "guess": "ai"
+    }
+  ]
+]
