@@ -789,6 +789,887 @@ The largest practical concern was the six high-confidence AI accusations against
 
 ---
 
+<!-- PROJECT8_RAW_EVIDENCE -->
+### Real Evaluation Output — Before and After
+
+The JSON below is actual output from the first trial of each scenario.
+All three trials are preserved in the committed `results/` files.
+
+#### Before — Trial 1
+
+**paper human passages**
+
+```json
+[
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4189321317629119,
+    "model_score": 0.477,
+    "style_score": 0.36086426352582385,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "In 1915, T. S. Eliot opened a poem with three lines that have remained"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.36203647267053907,
+    "model_score": 0.2976,
+    "style_score": 0.4264729453410781,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The diagnosis demands a foundation that post-Absolute-truth provides. "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5233979445302617,
+    "model_score": 0.4915,
+    "style_score": 0.5552958890605234,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The Absolute does not collapse cleanly, however, and the precise mecha"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5377248953180376,
+    "model_score": 0.5759,
+    "style_score": 0.49954979063607513,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "If interpretation is the condition of finite existence rather than a m"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5336007652051187,
+    "model_score": 0.5523,
+    "style_score": 0.5149015304102372,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Michel Foucault completes the triangulation by providing historical co"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5155485006209006,
+    "model_score": 0.4939,
+    "style_score": 0.5371970012418011,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The answer depends on whether the algorithm provides what hermeneutic "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3691843812489079,
+    "model_score": 0.3051,
+    "style_score": 0.4332687624978158,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Umberto Eco specifies the resistance mechanism with precision. In *The"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3641169693217561,
+    "model_score": 0.2671,
+    "style_score": 0.4611339386435122,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Algorithmic feedback systems are engineered, with extraordinary techni"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4442873802519298,
+    "model_score": 0.3298,
+    "style_score": 0.5587747605038597,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Lorenzo Simpson extends Anderson\u2019s distributional analysis. In *Toward"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.42336021798745754,
+    "model_score": 0.4672,
+    "style_score": 0.3795204359749151,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The potential for discontent alone, however, has rarely transformed ci"
+  }
+]
+```
+
+**separation human**
+
+```json
+[
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4189321317629119,
+    "model_score": 0.477,
+    "style_score": 0.36086426352582385,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "In 1915, T. S. Eliot opened a poem with three lines that have remained"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.36203647267053907,
+    "model_score": 0.2976,
+    "style_score": 0.4264729453410781,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The diagnosis demands a foundation that post-Absolute-truth provides. "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5233979445302617,
+    "model_score": 0.4915,
+    "style_score": 0.5552958890605234,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The Absolute does not collapse cleanly, however, and the precise mecha"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5377248953180376,
+    "model_score": 0.5759,
+    "style_score": 0.49954979063607513,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "If interpretation is the condition of finite existence rather than a m"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5336007652051187,
+    "model_score": 0.5523,
+    "style_score": 0.5149015304102372,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Michel Foucault completes the triangulation by providing historical co"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5155485006209006,
+    "model_score": 0.4939,
+    "style_score": 0.5371970012418011,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The answer depends on whether the algorithm provides what hermeneutic "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3691843812489079,
+    "model_score": 0.3051,
+    "style_score": 0.4332687624978158,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Umberto Eco specifies the resistance mechanism with precision. In *The"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3641169693217561,
+    "model_score": 0.2671,
+    "style_score": 0.4611339386435122,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Algorithmic feedback systems are engineered, with extraordinary techni"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4442873802519298,
+    "model_score": 0.3298,
+    "style_score": 0.5587747605038597,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Lorenzo Simpson extends Anderson\u2019s distributional analysis. In *Toward"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.42336021798745754,
+    "model_score": 0.4672,
+    "style_score": 0.3795204359749151,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The potential for discontent alone, however, has rarely transformed ci"
+  }
+]
+```
+
+**separation AI**
+
+```json
+[
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6399781984254715,
+    "model_score": 0.7007,
+    "style_score": 0.5792563968509431,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Artificial intelligence is becoming an important part of modern commun"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6258687182226467,
+    "model_score": 0.6726,
+    "style_score": 0.5791374364452934,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The role of technology in education has expanded significantly over th"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6395812523705194,
+    "model_score": 0.6555,
+    "style_score": 0.6236625047410389,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Human understanding is shaped by the experiences, assumptions, and cul"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5131149371959687,
+    "model_score": 0.434,
+    "style_score": 0.5922298743919373,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Recommendation systems influence how people discover music, news, ente"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.48716542383560757,
+    "model_score": 0.408,
+    "style_score": 0.5663308476712152,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Questions of authorship have become more complicated as generative too"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5405581793485781,
+    "model_score": 0.4665,
+    "style_score": 0.6146163586971563,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Public institutions depend on procedures that allow people to challeng"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.45674712383249283,
+    "model_score": 0.3314,
+    "style_score": 0.5820942476649856,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The fairness of an automated writing detector cannot be evaluated thro"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4557025395680702,
+    "model_score": 0.3912,
+    "style_score": 0.5202050791361404,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Writing style varies across genres, audiences, and individual preferen"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6179450476748454,
+    "model_score": 0.6308,
+    "style_score": 0.6050900953496908,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Many people use digital tools to reduce the amount of time spent on ro"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4319348831825891,
+    "model_score": 0.3286,
+    "style_score": 0.5352697663651782,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Democratic discussion requires citizens to encounter claims they do no"
+  }
+]
+```
+
+**label coverage**
+
+```json
+[
+  {
+    "status": 200,
+    "guess": "human",
+    "confidence": 0.16201907278212122,
+    "model_score": 0.0459,
+    "style_score": 0.27813814556424243,
+    "label": "We think this was probably written by a person.",
+    "sent": "Late again. Coffee spilled. Still made it to class."
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4734484126984127,
+    "model_score": 0.3215,
+    "style_score": 0.6253968253968254,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The old library was quiet after the rain, and the stairs smelled like "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6399781984254715,
+    "model_score": 0.7007,
+    "style_score": 0.5792563968509431,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Artificial intelligence is becoming an important part of modern commun"
+  }
+]
+```
+
+**invalid inputs**
+
+```json
+[
+  {
+    "status": 400,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "{\"creator_id\": \"eval_missing_text\"}"
+  },
+  {
+    "status": 400,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "(empty text)"
+  },
+  {
+    "status": 400,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "{\"text\": \"A valid piece of writing but no creator ID\"}"
+  },
+  {
+    "status": 413,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  }
+]
+```
+
+**Appeal reliability — Trial 1**
+
+```json
+[
+  {
+    "case": 1,
+    "content_id": "a6015987-f306-4ce1-8746-310e08f9061f",
+    "reasoning": "Review requested for trial 1, case 1.",
+    "submit_status": 200,
+    "appeal_status": 200,
+    "appeal_response": {
+      "content_id": "a6015987-f306-4ce1-8746-310e08f9061f",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  },
+  {
+    "case": 2,
+    "content_id": "71ab8f83-6c22-4fae-b159-b2f06792b6c9",
+    "reasoning": "Review requested for trial 1, case 2.",
+    "submit_status": 200,
+    "appeal_status": 200,
+    "appeal_response": {
+      "content_id": "71ab8f83-6c22-4fae-b159-b2f06792b6c9",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  },
+  {
+    "case": 3,
+    "content_id": "312e3f7a-26b1-471d-a0fb-5ce4b9449bb5",
+    "reasoning": "Review requested for trial 1, case 3.",
+    "submit_status": 200,
+    "appeal_status": 200,
+    "appeal_response": {
+      "content_id": "312e3f7a-26b1-471d-a0fb-5ce4b9449bb5",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  },
+  {
+    "case": 4,
+    "content_id": "f4a8291c-b8b7-475a-adf6-2ac9383f2152",
+    "reasoning": "Review requested for trial 1, case 4.",
+    "submit_status": 200,
+    "appeal_status": 200,
+    "appeal_response": {
+      "content_id": "f4a8291c-b8b7-475a-adf6-2ac9383f2152",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  },
+  {
+    "case": 5,
+    "content_id": "31e38787-3337-4b41-8b3d-a33944c1db61",
+    "reasoning": "Review requested for trial 1, case 5.",
+    "submit_status": 200,
+    "appeal_status": 200,
+    "appeal_response": {
+      "content_id": "31e38787-3337-4b41-8b3d-a33944c1db61",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  }
+]
+```
+
+#### After — Trial 1
+
+**paper human passages**
+
+```json
+[
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4189321317629119,
+    "model_score": 0.477,
+    "style_score": 0.36086426352582385,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "In 1915, T. S. Eliot opened a poem with three lines that have remained"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.36203647267053907,
+    "model_score": 0.2976,
+    "style_score": 0.4264729453410781,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The diagnosis demands a foundation that post-Absolute-truth provides. "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5233979445302617,
+    "model_score": 0.4915,
+    "style_score": 0.5552958890605234,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The Absolute does not collapse cleanly, however, and the precise mecha"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5377248953180376,
+    "model_score": 0.5759,
+    "style_score": 0.49954979063607513,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "If interpretation is the condition of finite existence rather than a m"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5336007652051187,
+    "model_score": 0.5523,
+    "style_score": 0.5149015304102372,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Michel Foucault completes the triangulation by providing historical co"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5155485006209006,
+    "model_score": 0.4939,
+    "style_score": 0.5371970012418011,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The answer depends on whether the algorithm provides what hermeneutic "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3691843812489079,
+    "model_score": 0.3051,
+    "style_score": 0.4332687624978158,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Umberto Eco specifies the resistance mechanism with precision. In *The"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3641169693217561,
+    "model_score": 0.2671,
+    "style_score": 0.4611339386435122,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Algorithmic feedback systems are engineered, with extraordinary techni"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4442873802519298,
+    "model_score": 0.3298,
+    "style_score": 0.5587747605038597,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Lorenzo Simpson extends Anderson\u2019s distributional analysis. In *Toward"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.42336021798745754,
+    "model_score": 0.4672,
+    "style_score": 0.3795204359749151,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The potential for discontent alone, however, has rarely transformed ci"
+  }
+]
+```
+
+**separation human**
+
+```json
+[
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4189321317629119,
+    "model_score": 0.477,
+    "style_score": 0.36086426352582385,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "In 1915, T. S. Eliot opened a poem with three lines that have remained"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.36203647267053907,
+    "model_score": 0.2976,
+    "style_score": 0.4264729453410781,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The diagnosis demands a foundation that post-Absolute-truth provides. "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5233979445302617,
+    "model_score": 0.4915,
+    "style_score": 0.5552958890605234,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The Absolute does not collapse cleanly, however, and the precise mecha"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5377248953180376,
+    "model_score": 0.5759,
+    "style_score": 0.49954979063607513,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "If interpretation is the condition of finite existence rather than a m"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5336007652051187,
+    "model_score": 0.5523,
+    "style_score": 0.5149015304102372,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Michel Foucault completes the triangulation by providing historical co"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5155485006209006,
+    "model_score": 0.4939,
+    "style_score": 0.5371970012418011,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The answer depends on whether the algorithm provides what hermeneutic "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3691843812489079,
+    "model_score": 0.3051,
+    "style_score": 0.4332687624978158,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Umberto Eco specifies the resistance mechanism with precision. In *The"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3641169693217561,
+    "model_score": 0.2671,
+    "style_score": 0.4611339386435122,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Algorithmic feedback systems are engineered, with extraordinary techni"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4442873802519298,
+    "model_score": 0.3298,
+    "style_score": 0.5587747605038597,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Lorenzo Simpson extends Anderson\u2019s distributional analysis. In *Toward"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.42336021798745754,
+    "model_score": 0.4672,
+    "style_score": 0.3795204359749151,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The potential for discontent alone, however, has rarely transformed ci"
+  }
+]
+```
+
+**separation AI**
+
+```json
+[
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6399781984254715,
+    "model_score": 0.7007,
+    "style_score": 0.5792563968509431,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Artificial intelligence is becoming an important part of modern commun"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6258687182226467,
+    "model_score": 0.6726,
+    "style_score": 0.5791374364452934,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The role of technology in education has expanded significantly over th"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6395812523705194,
+    "model_score": 0.6555,
+    "style_score": 0.6236625047410389,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Human understanding is shaped by the experiences, assumptions, and cul"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5131149371959687,
+    "model_score": 0.434,
+    "style_score": 0.5922298743919373,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Recommendation systems influence how people discover music, news, ente"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.48716542383560757,
+    "model_score": 0.408,
+    "style_score": 0.5663308476712152,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Questions of authorship have become more complicated as generative too"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5405581793485781,
+    "model_score": 0.4665,
+    "style_score": 0.6146163586971563,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Public institutions depend on procedures that allow people to challeng"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.45674712383249283,
+    "model_score": 0.3314,
+    "style_score": 0.5820942476649856,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The fairness of an automated writing detector cannot be evaluated thro"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4557025395680702,
+    "model_score": 0.3912,
+    "style_score": 0.5202050791361404,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Writing style varies across genres, audiences, and individual preferen"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6179450476748454,
+    "model_score": 0.6308,
+    "style_score": 0.6050900953496908,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Many people use digital tools to reduce the amount of time spent on ro"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4319348831825891,
+    "model_score": 0.3286,
+    "style_score": 0.5352697663651782,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Democratic discussion requires citizens to encounter claims they do no"
+  }
+]
+```
+
+**label coverage**
+
+```json
+[
+  {
+    "status": 200,
+    "guess": "human",
+    "confidence": 0.16201907278212122,
+    "model_score": 0.0459,
+    "style_score": 0.27813814556424243,
+    "label": "We think this was probably written by a person.",
+    "sent": "Late again. Coffee spilled. Still made it to class."
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4734484126984127,
+    "model_score": 0.3215,
+    "style_score": 0.6253968253968254,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The old library was quiet after the rain, and the stairs smelled like "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.6399781984254715,
+    "model_score": 0.7007,
+    "style_score": 0.5792563968509431,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Artificial intelligence is becoming an important part of modern commun"
+  }
+]
+```
+
+**invalid inputs**
+
+```json
+[
+  {
+    "status": 400,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "{\"creator_id\": \"eval_missing_text\"}"
+  },
+  {
+    "status": 400,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "(empty text)"
+  },
+  {
+    "status": 400,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "{\"text\": \"A valid piece of writing but no creator ID\"}"
+  },
+  {
+    "status": 413,
+    "guess": null,
+    "confidence": null,
+    "model_score": null,
+    "style_score": null,
+    "label": null,
+    "sent": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  }
+]
+```
+
+**Appeal reliability — Trial 1**
+
+```json
+[
+  {
+    "content_id": "6c24f138-bcc8-48d4-8af7-e13d53fb4097",
+    "reasoning": "After-test appeal, trial 1, case 1.",
+    "http_status": 200,
+    "response": {
+      "content_id": "6c24f138-bcc8-48d4-8af7-e13d53fb4097",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  },
+  {
+    "content_id": "ec4cfb04-895f-46b6-8b28-959ff1e19ed7",
+    "reasoning": "After-test appeal, trial 1, case 2.",
+    "http_status": 200,
+    "response": {
+      "content_id": "ec4cfb04-895f-46b6-8b28-959ff1e19ed7",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  },
+  {
+    "content_id": "40e01f64-ecb0-49a8-9d56-d168d3d18ad6",
+    "reasoning": "After-test appeal, trial 1, case 3.",
+    "http_status": 200,
+    "response": {
+      "content_id": "40e01f64-ecb0-49a8-9d56-d168d3d18ad6",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  },
+  {
+    "content_id": "27fa0bbf-46b7-4d4d-bcfa-8da613f26408",
+    "reasoning": "After-test appeal, trial 1, case 4.",
+    "http_status": 200,
+    "response": {
+      "content_id": "27fa0bbf-46b7-4d4d-bcfa-8da613f26408",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  },
+  {
+    "content_id": "7fc95c17-ffff-4e2c-aeb6-eea2167a9072",
+    "reasoning": "After-test appeal, trial 1, case 5.",
+    "http_status": 200,
+    "response": {
+      "content_id": "7fc95c17-ffff-4e2c-aeb6-eea2167a9072",
+      "message": "Your appeal has been recorded.",
+      "status": "under_review"
+    },
+    "passed": true
+  }
+]
+```
+
+
 ## The Improvement
 
 ### What I changed
