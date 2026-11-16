@@ -525,77 +525,480 @@ These are the **before-improvement results**. No changes to detection signals, t
 
 ## Run Log and Verdicts
 
-<!-- Your five criteria across three trials. `run_eval.py --label before`. -->
+[
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4189321317629119,
+    "model_score": 0.477,
+    "style_score": 0.36086426352582385,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "In 1915, T. S. Eliot opened a poem with three lines that have remained"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.36203647267053907,
+    "model_score": 0.2976,
+    "style_score": 0.4264729453410781,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The diagnosis demands a foundation that post-Absolute-truth provides. "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5233979445302617,
+    "model_score": 0.4915,
+    "style_score": 0.5552958890605234,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The Absolute does not collapse cleanly, however, and the precise mecha"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5377248953180376,
+    "model_score": 0.5759,
+    "style_score": 0.49954979063607513,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "If interpretation is the condition of finite existence rather than a m"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5336007652051187,
+    "model_score": 0.5523,
+    "style_score": 0.5149015304102372,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Michel Foucault completes the triangulation by providing historical co"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5155485006209006,
+    "model_score": 0.4939,
+    "style_score": 0.5371970012418011,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The answer depends on whether the algorithm provides what hermeneutic "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3691843812489079,
+    "model_score": 0.3051,
+    "style_score": 0.4332687624978158,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Umberto Eco specifies the resistance mechanism with precision. In *The"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3641169693217561,
+    "model_score": 0.2671,
+    "style_score": 0.4611339386435122,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Algorithmic feedback systems are engineered, with extraordinary techni"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4442873802519298,
+    "model_score": 0.3298,
+    "style_score": 0.5587747605038597,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Lorenzo Simpson extends Anderson\u2019s distributional analysis. In *Toward"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.42336021798745754,
+    "model_score": 0.4672,
+    "style_score": 0.3795204359749151,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The potential for discontent alone, however, has rarely transformed ci"
+  }
+]
+
+[
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4189321317629119,
+    "model_score": 0.477,
+    "style_score": 0.36086426352582385,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "In 1915, T. S. Eliot opened a poem with three lines that have remained"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.36203647267053907,
+    "model_score": 0.2976,
+    "style_score": 0.4264729453410781,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The diagnosis demands a foundation that post-Absolute-truth provides. "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5233979445302617,
+    "model_score": 0.4915,
+    "style_score": 0.5552958890605234,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The Absolute does not collapse cleanly, however, and the precise mecha"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5377248953180376,
+    "model_score": 0.5759,
+    "style_score": 0.49954979063607513,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "If interpretation is the condition of finite existence rather than a m"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5336007652051187,
+    "model_score": 0.5523,
+    "style_score": 0.5149015304102372,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Michel Foucault completes the triangulation by providing historical co"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.5155485006209006,
+    "model_score": 0.4939,
+    "style_score": 0.5371970012418011,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The answer depends on whether the algorithm provides what hermeneutic "
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3691843812489079,
+    "model_score": 0.3051,
+    "style_score": 0.4332687624978158,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Umberto Eco specifies the resistance mechanism with precision. In *The"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.3641169693217561,
+    "model_score": 0.2671,
+    "style_score": 0.4611339386435122,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Algorithmic feedback systems are engineered, with extraordinary techni"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.4442873802519298,
+    "model_score": 0.3298,
+    "style_score": 0.5587747605038597,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "Lorenzo Simpson extends Anderson\u2019s distributional analysis. In *Toward"
+  },
+  {
+    "status": 200,
+    "guess": "unsure",
+    "confidence": 0.42336021798745754,
+    "model_score": 0.4672,
+    "style_score": 0.3795204359749151,
+    "label": "We cannot confidently tell whether this was written by a person or AI.",
+    "sent": "The potential for discontent alone, however, has rarely transformed ci"
+  }
+]
+
+### Before improvement
+
+Five acceptance criteria were tested against three trials, using `run_eval.py`, direct score-boundary checks, and a separate appeal test.
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. False positives | At most 1/10 human passages labeled AI | 0/10 | 0/10 | 0/10 | MET |
+| 2. Score separation | AI mean at least 0.30 above human mean | 0.0916 | 0.0916 | 0.0916 | MISSED |
+| 3. Label coverage | 3/3 labels reachable | 3/3 | 3/3 | 3/3 | MET |
+| 4. Appeal reliability | 5/5 valid appeals successful | 5/5 | 5/5 | 5/5 | MET |
+| 5. Invalid inputs | 4/4 rejected correctly | 4/4 | 4/4 | 4/4 | MET |
 
-**Real output from one trial**, pasted as text, naming the file and function
-that produced it:
+**Criterion 1 — False positives**
 
-```json
+All ten tested passages came from my own paper, *Algorithmic Aphasia*. None received an AI classification in any trial. All were classified as `unsure`.
 
+This meets the stated numerical criterion, but the sample is limited because all ten passages came from one piece of academic writing. The staff attack set exposed six false positives in other human-writing styles.
+
+**Criterion 2 — Score separation**
+
+The average signal values from the baseline evaluation were:
+
+| Signal | Human mean | AI mean | Difference |
+|---|---:|---:|---:|
+| GPT-2 model signal | 0.4257 | 0.5019 | 0.0762 |
+| Stylometry signal | 0.4727 | 0.5798 | 0.1071 |
+| Combined score | 0.4492 | 0.5409 | 0.0916 |
+
+The required gap was 0.30. The measured gap was only 0.0916 in all three trials.
+
+**Verdict: MISSED.**
+
+The failure begins in the two signals, which produce only weakly separated distributions for the chosen human and AI examples. GPT-2 perplexity does not reliably identify authorship, and the stylometry heuristic treats patterns such as vocabulary repetition and sentence regularity as evidence of AI writing.
+
+The combining rule weights each signal equally. Averaging two weakly separated signals cannot create a substantially larger separation. The label-mapping stage is not the underlying cause of this criterion's failure.
+
+**Criterion 3 — Label coverage**
+
+Direct tests of `scoring.py::score_to_label` verified the human, uncertain, and AI score ranges across three trials. The boundary tests showed every tested boundary mapped to one label.
+
+The chosen live submission probes produced only `human` and `unsure`, but the independent staff attack set also produced `ai` classifications. Therefore, all three labels were demonstrably reachable, even though the original three live probes did not cover them all.
+
+**Verdict: MET.**
+
+**Criterion 4 — Appeal reliability**
+
+Fifteen valid appeals were tested in three groups of five.
+
+```text
+Trial 1: 5/5
+Trial 2: 5/5
+Trial 3: 5/5
+Overall: MET
 ```
 
-**Diagnoses**
+Every appeal returned HTTP 200, confirmed `under_review`, and had a matching audit entry with its reasoning.
 
-<!-- For each miss AND each broken attack: the stage and the mechanism.
+**Criterion 5 — Invalid input handling**
 
-     Your service has five stages: the route, signal one, signal two, the
-     combining rule, and the label mapping.
+```text
+Trial 1: [400, 400, 400, 413]
+Trial 2: [400, 400, 400, 413]
+Trial 3: [400, 400, 400, 413]
+Overall: MET
+```
 
-     Not a diagnosis:  "The evasion attacks got through."
-     A diagnosis:      "Four evasion inputs got through. All four had typos
-                        added to AI-generated text. My second signal measures
-                        word variety, and typos raise word variety — so it read
-                        them as more human. My combining rule weights that
-                        signal at 0.6, so it dragged the whole score down."
+Missing text, empty text, and missing creator IDs returned HTTP 400. Text exceeding 5,000 characters returned HTTP 413. All returned structured JSON errors without crashing.
 
-     Look for a pattern. Five failures on one signal is one problem, not five. -->
+### Baseline conclusion
 
+Four of the five acceptance criteria were met.
 
+The major numerical failure was score separation. The staff attack set independently demonstrated that meeting the false-positive criterion on one collection of human writing does not guarantee good behavior across other writing styles.
+
+The largest practical concern was the six high-confidence AI accusations against staff-designated human-written passages.
 
 ---
 
 ## The Improvement
 
-**What I changed:**
+### What I changed
 
-**Which diagnosis pointed at it:**
+I changed exactly one configuration value in `config.py`:
+
+```python
+AI_THRESHOLD = 0.75
+```
+
+Previously:
+
+```python
+AI_THRESHOLD = 0.65
+```
+
+The human threshold remained 0.35. Both signals, their 50/50 weights, the input validation, and the label text remained unchanged.
+
+### Why I made this change
+
+The staff attack set included six human-written passages classified as AI, with combined scores between approximately 0.683 and 0.718.
+
+The existing threshold of 0.65 treated these scores as sufficient for a high-confidence accusation. Raising the threshold to 0.75 moves them into the uncertain category instead.
+
+This is a change to the **decision policy**, not an improvement in the underlying accuracy of the scores.
+
+I selected it because wrongly accusing a human writer has greater consequences than declining to make a confident classification.
+
+### Measured results
+
+| Measure | Before | After |
+|---|---|---|
+| Human-writing probes falsely labeled AI | 6/8 | 0/8 |
+| Evasion probes avoiding AI label | 9/10 | 9/10 |
+| Unusual malformed text confidently classified | 5/8 | 3/8 |
+| Malformed HTTP requests correctly rejected | 12/12 | 12/12 |
+| Flood requests blocked after limit | 2/12 | 2/12 |
+| AI-vs-human average score gap | 0.0916 | 0.0916 |
+| Valid appeals successful | 15/15 | 15/15 |
+
+Under the original attack-verdict convention, broken attacks decreased from **20/56 to 12/56**.
 
 ### Attack Run — After
 
-<!-- Same format. `run_attacks.py --label after` -->
+Command:
 
+```bash
+python run_attacks.py --set attack_set --label after
+```
 
+Output file: `results/attack_run_2026-11-16_1728_after.md`
 
-**Did it help, and how do I know:**
+| ID | HTTP | Classification | Verdict |
+|---|---:|---|---|
+| EV01 | 200 | unsure | BROKE |
+| EV02 | 200 | unsure | BROKE |
+| EV03 | 200 | unsure | BROKE |
+| EV04 | 200 | unsure | BROKE |
+| EV05 | 200 | unsure | BROKE |
+| EV06 | 200 | unsure | BROKE |
+| EV07 | 200 | unsure | BROKE |
+| EV08 | 200 | unsure | BROKE |
+| EV09 | 200 | unsure | BROKE |
+| EV10 | 200 | ai | HELD |
+| FP01 | 200 | unsure | HELD |
+| FP02 | 200 | unsure | HELD |
+| FP03 | 200 | unsure | HELD |
+| FP04 | 200 | unsure | HELD |
+| FP05 | 200 | unsure | HELD |
+| FP06 | 200 | unsure | HELD |
+| FP07 | 200 | unsure | HELD |
+| FP08 | 200 | human | HELD |
+| PI01 | 200 | unsure | HELD* |
+| PI02 | 200 | human | HELD* |
+| PI03 | 200 | unsure | HELD* |
+| PI04 | 200 | unsure | HELD* |
+| PI05 | 200 | unsure | HELD* |
+| PI06 | 200 | unsure | HELD* |
+| MF01 | 400 | — | HELD |
+| MF02 | 400 | — | HELD |
+| MF03 | 200 | human | BROKE |
+| MF04 | 200 | human | BROKE |
+| MF05 | 200 | ai | BROKE |
+| MF06 | 200 | unsure | HELD |
+| MF07 | 200 | unsure | HELD |
+| MF08 | 413 | — | HELD |
+| RQ01 | 400 | — | HELD |
+| RQ02 | 400 | — | HELD |
+| RQ03 | 400 | — | HELD |
+| RQ04 | 400 | — | HELD |
+| RQ05 | 400 | — | HELD |
+| RQ06 | 400 | — | HELD |
+| RQ07 | 400 | — | HELD |
+| RQ08 | 400 | — | HELD |
+| RQ09 | 400 | — | HELD |
+| RQ10 | 400 | — | HELD |
+| RQ11 | 400 | — | HELD |
+| RQ12 | 400 | — | HELD |
+| FL01_01 | 200 | human | HELD |
+| FL01_02 | 200 | human | HELD |
+| FL01_03 | 200 | human | HELD |
+| FL01_04 | 200 | human | HELD |
+| FL01_05 | 200 | human | HELD |
+| FL01_06 | 200 | human | HELD |
+| FL01_07 | 200 | human | HELD |
+| FL01_08 | 200 | human | HELD |
+| FL01_09 | 200 | human | HELD |
+| FL01_10 | 200 | human | HELD |
+| FL01_11 | 429 | — | HELD |
+| FL01_12 | 429 | — | HELD |
 
-<!-- Widening the unsure band usually fixes one problem and creates another.
-     Reporting that trade honestly is worth full credit. -->
+*Prompt-injection verdicts remain provisional. The responses did not establish that injected instructions controlled the service; PI02 returned `human`, but its numerical score did not match the attack's requested value.*
 
+### After-improvement acceptance criteria
 
+| Criterion | Run 1 | Run 2 | Run 3 | Verdict |
+|---|---|---|---|---|
+| 1. False positives, target ≤1/10 | 0/10 | 0/10 | 0/10 | MET |
+| 2. Score separation, target ≥0.30 | 0.0916 | 0.0916 | 0.0916 | MISSED |
+| 3. Label coverage, target 3/3 | 3/3 | 3/3 | 3/3 | MET |
+| 4. Appeals, target 5/5 | 5/5 | 5/5 | 5/5 | MET |
+| 5. Invalid inputs, target 4/4 | 4/4 | 4/4 | 4/4 | MET |
+
+The threshold change left the average score-separation gap unchanged, as expected. The same underlying model and stylometry scores were being calculated.
+
+The five appeals succeeded in each after-improvement trial. Score-boundary tests also confirmed that all three classifications remained reachable.
+
+### Did the improvement help?
+
+**Yes, for the problem it was designed to address.**
+
+The staff false-positive count dropped from six to zero without reducing the service's ability to accept valid requests, reject invalid request structures, record appeals, or enforce rate limits.
+
+However, the improvement did not increase the detector's ability to distinguish AI from human writing. It simply required stronger evidence before the service returned a confident AI accusation.
 
 ---
 
 ## What's Still Broken
 
-<!-- For each attack still getting through and each criterion still missed:
-     what you'd do, and why you stopped. -->
+### AI-generated writing can evade classification
 
+Nine of ten AI-evasion probes still avoided an AI label. The detector classified them as uncertain.
 
+These attacks involved typos, sentence restructuring, pasted quotations, changes in vocabulary, punctuation manipulation, short text, and added human-style introductions.
 
-**The trade I'd make if this ran for real:**
+**Diagnosis:** The model and stylometry signals respond to the statistical properties of the submitted text, not directly to how it was produced. Edits can shift those properties without changing the text's origin.
 
-<!-- Two sentences. Fewer wrong accusations means more AI text getting through.
-     Say which way you'd go and WHO PAYS FOR IT. -->
+The combining rule then averages the affected scores, often leaving them in the uncertain band.
 
+**What I would fix next:** Evaluate stronger detection signals with a more diverse dataset and measure the effects of editing and paraphrasing. I would also consider provenance evidence rather than relying entirely on text classification.
 
+### Score separation remains below target
+
+The average difference between AI and human scores remains 0.0916, far below my required 0.30.
+
+**Diagnosis:** Both signals individually show weak separation. Changing the final classification threshold cannot repair that.
+
+**What I would fix next:** Develop a better evaluation dataset with more varied writing, then reconsider feature selection, signal calibration, and whether perplexity is useful for this task.
+
+### Meaningless inputs can receive confident labels
+
+MF03 returned `human` for control characters, MF04 returned `human` for punctuation-only text, and MF05 returned `ai` for an extremely long single word.
+
+**Diagnosis:** The route permits some inputs that contain insufficient meaningful language. The scoring pipeline then attempts to interpret them as writing anyway.
+
+**What I would fix next:** Introduce input validation for meaningful linguistic content, while avoiding overly restrictive rules that would reject legitimate unusual writing.
+
+The Arabic-language probe, MF07, is especially important to distinguish from meaningless text. Arabic is valid human language. Its original confident AI classification showed that an English-oriented detector may behave unfairly on multilingual inputs. After the threshold change it became uncertain, but the underlying language-support problem remains.
+
+### Audit logging is incomplete for some rejected requests
+
+The first extracted audit log contained identifiable rejection events for only five of the twelve malformed HTTP requests.
+
+**Diagnosis:** Some validation paths appear to return HTTP errors without calling the audit logger.
+
+**What I would fix next:** Log rejected requests consistently, including requests that fail before normal submission validation, while ensuring sensitive or malformed payloads are not unnecessarily stored.
+
+### Security and operational limitations
+
+The rate limiter uses caller-supplied creator IDs when available, which a malicious caller could change. Its in-memory counters also do not survive service restarts.
+
+These are design limitations rather than demonstrated compromises in the attack run.
+
+I would eventually use authenticated identities and durable rate-limit storage for a deployed service.
+
+### Why I stopped here
+
+The assignment called for one controlled improvement and a before-and-after measurement. I changed only the AI classification threshold so the results could be meaningfully compared.
+
+Making additional changes to validation, model scoring, or rate limiting during the same experiment would make it harder to determine which change produced which outcome.
+
+### The production tradeoff
+
+If Provenance Guard were used in a real writing platform, I would prioritize avoiding false accusations over confidently detecting every AI-written passage.
+
+The cost is that more AI-generated text receives an uncertain classification. I consider that preferable to treating weak statistical evidence as proof that a person did not write their own work.
+
+**I would not use this detector's classification alone as evidence of academic misconduct or dishonesty.** It should support cautious review, not substitute for reliable provenance evidence and human judgment.
+
+---
+
+### Unit 8 — How I Used AI
+
+I used ChatGPT as a learning and debugging assistant during the red-teaming process.
+
+It helped me interpret the attack-run results, organize the evaluation scenarios, calculate the numerical acceptance-criterion outcomes, and understand how different scoring stages contributed to failures. I supplied my own writing from *Algorithmic Aphasia* as human-authored test material, while AI-generated samples were used as comparison data.
+
+ChatGPT also suggested changing the AI classification threshold from 0.65 to 0.75 after we examined the original false-positive results. I made and tested that single change, ran the actual before-and-after evaluations, and reviewed the measured tradeoff.
+
+AI also assisted with formatting and drafting the README documentation. The reported test results came from the project scripts and actual service responses, not invented examples.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 

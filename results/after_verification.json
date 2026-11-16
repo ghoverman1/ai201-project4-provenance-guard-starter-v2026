@@ -1,0 +1,197 @@
+{
+  "before_score_gaps": [
+    0.0916,
+    0.0916,
+    0.0916
+  ],
+  "after_score_gaps": [
+    0.0916,
+    0.0916,
+    0.0916
+  ],
+  "appeal_trials_after": [
+    {
+      "trial": 1,
+      "passed": 5,
+      "cases": [
+        {
+          "content_id": "6c24f138-bcc8-48d4-8af7-e13d53fb4097",
+          "reasoning": "After-test appeal, trial 1, case 1.",
+          "http_status": 200,
+          "response": {
+            "content_id": "6c24f138-bcc8-48d4-8af7-e13d53fb4097",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "ec4cfb04-895f-46b6-8b28-959ff1e19ed7",
+          "reasoning": "After-test appeal, trial 1, case 2.",
+          "http_status": 200,
+          "response": {
+            "content_id": "ec4cfb04-895f-46b6-8b28-959ff1e19ed7",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "40e01f64-ecb0-49a8-9d56-d168d3d18ad6",
+          "reasoning": "After-test appeal, trial 1, case 3.",
+          "http_status": 200,
+          "response": {
+            "content_id": "40e01f64-ecb0-49a8-9d56-d168d3d18ad6",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "27fa0bbf-46b7-4d4d-bcfa-8da613f26408",
+          "reasoning": "After-test appeal, trial 1, case 4.",
+          "http_status": 200,
+          "response": {
+            "content_id": "27fa0bbf-46b7-4d4d-bcfa-8da613f26408",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "7fc95c17-ffff-4e2c-aeb6-eea2167a9072",
+          "reasoning": "After-test appeal, trial 1, case 5.",
+          "http_status": 200,
+          "response": {
+            "content_id": "7fc95c17-ffff-4e2c-aeb6-eea2167a9072",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "passed": 5,
+      "cases": [
+        {
+          "content_id": "717da8df-633e-4159-b18f-c7043f8c20b0",
+          "reasoning": "After-test appeal, trial 2, case 1.",
+          "http_status": 200,
+          "response": {
+            "content_id": "717da8df-633e-4159-b18f-c7043f8c20b0",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "dec452aa-0004-4092-8963-97cab751d9de",
+          "reasoning": "After-test appeal, trial 2, case 2.",
+          "http_status": 200,
+          "response": {
+            "content_id": "dec452aa-0004-4092-8963-97cab751d9de",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "65127676-4a3b-425d-99f2-8a4ebb253f89",
+          "reasoning": "After-test appeal, trial 2, case 3.",
+          "http_status": 200,
+          "response": {
+            "content_id": "65127676-4a3b-425d-99f2-8a4ebb253f89",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "83c70537-6f07-45fd-a986-9e292f1d65fe",
+          "reasoning": "After-test appeal, trial 2, case 4.",
+          "http_status": 200,
+          "response": {
+            "content_id": "83c70537-6f07-45fd-a986-9e292f1d65fe",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "323aed84-3d9c-416f-a31b-c3a2679d8f93",
+          "reasoning": "After-test appeal, trial 2, case 5.",
+          "http_status": 200,
+          "response": {
+            "content_id": "323aed84-3d9c-416f-a31b-c3a2679d8f93",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "passed": 5,
+      "cases": [
+        {
+          "content_id": "8bd22d81-754b-42d4-a702-3075f954b3e3",
+          "reasoning": "After-test appeal, trial 3, case 1.",
+          "http_status": 200,
+          "response": {
+            "content_id": "8bd22d81-754b-42d4-a702-3075f954b3e3",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "5b1894a8-a7c4-4433-8cb4-b3fd7dcb9182",
+          "reasoning": "After-test appeal, trial 3, case 2.",
+          "http_status": 200,
+          "response": {
+            "content_id": "5b1894a8-a7c4-4433-8cb4-b3fd7dcb9182",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "43b76d94-0a2b-4985-8b08-926532fb746c",
+          "reasoning": "After-test appeal, trial 3, case 3.",
+          "http_status": 200,
+          "response": {
+            "content_id": "43b76d94-0a2b-4985-8b08-926532fb746c",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "5edc0100-962b-48b9-801e-762cfd69c3f0",
+          "reasoning": "After-test appeal, trial 3, case 4.",
+          "http_status": 200,
+          "response": {
+            "content_id": "5edc0100-962b-48b9-801e-762cfd69c3f0",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        },
+        {
+          "content_id": "2cf48107-131f-4af7-a041-822fac89991d",
+          "reasoning": "After-test appeal, trial 3, case 5.",
+          "http_status": 200,
+          "response": {
+            "content_id": "2cf48107-131f-4af7-a041-822fac89991d",
+            "message": "Your appeal has been recorded.",
+            "status": "under_review"
+          },
+          "passed": true
+        }
+      ]
+    }
+  ]
+}
