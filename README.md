@@ -250,29 +250,31 @@ AI also helped me interpret the results and organize my README documentation. Th
 <!-- ═══════════════════════ UNIT 8 — THE TEST ═══════════════════════ -->
 
 ---
-
 ## Rate Limiting
 
-**My limits:** ___ per minute, ___ per day
+**My limits:** 10 submissions per minute and 200 submissions per day.
 
 **Why those numbers and not others:**
-<!-- Think about two people: a real writer submitting their own work a few
-     times an hour, and a script sending a thousand variations to map your
-     thresholds. Your numbers have to be liveable for the first and hostile to
-     the second. -->
 
-**What a caller counts as:** <!-- per address, or per creator_id? They fail
-differently — one script can look like a thousand callers, and one household
-can look like one. -->
+A legitimate writer may submit several pieces of writing in a short period, so I wanted to allow normal usage without unnecessary restrictions. However, an automated script attempting to map the detector's thresholds could submit hundreds of variations. Limiting submissions helps prevent this behavior and reduces unnecessary model computation.
+
+**What a caller counts as:**
+
+The application identifies callers using `creator_id` when a valid identifier is supplied, falling back to the requester's IP address otherwise. This supports per-creator rate limiting but is not strong authentication: a malicious client could potentially change identifiers.
 
 **The run of status codes when I pushed past it:**
 
-<!-- python run_attacks.py --flood 15 -->
+I ran `python run_attacks.py --flood 15`, sending 15 submissions using the same `creator_id`.
 
+```text
+200 200 200 200 200 200 200 200 200 200 429 429 429 429 429
 ```
 
-```
+The first 10 submissions were accepted. The next five were rejected with HTTP 429 because the per-minute limit had been reached.
 
+I verified the audit log using `GET /log?limit=5`. All five rejected requests were recorded with the `flood_tester` creator ID, `rate_limited` rejection reason, `rejected` status, and the applicable limit of 10 requests per minute.
+
+This confirms that the rate limiter prevents excessive submissions and records rejections for later investigation.
 ---
 
 ## Attack Run — Before
